@@ -2,18 +2,17 @@
 # See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
 bundle:
   name: lab
-  uuid: 5b8581ed-842c-4f93-b7c4-4c287017ba56
 
 include:
   - resources/*.yml
 
 targets:
-  dev:
+  Test:
     # The default target uses 'mode: development' to create a development copy.
-    # - Deployed resources get prefixed with '[dev my_user_name]'
+    # - Deployed resources get prefixed with '[Test my_user_name]'
     # - Any job schedules and triggers are paused by default.
     # See also https://docs.databricks.com/dev-tools/bundles/deployment-modes.html.
-    mode: development
+    mode: Test
     default: true
     workspace:
       host: https://adb-3549239056501620.0.azuredatabricks.net
