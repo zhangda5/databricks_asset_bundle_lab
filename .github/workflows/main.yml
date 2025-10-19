@@ -35,7 +35,12 @@ jobs:
 
       # Deploy the bundle to the "Test" target as defined
       # in the bundle's settings file.
+      - run: databricks bundle validate
+      
       - run: databricks bundle deploy
+
+      - run: databricks bundle run lab
+      
         working-directory: .
         env:
           DATABRICKS_TOKEN: ${{ secrets.PAT }}
