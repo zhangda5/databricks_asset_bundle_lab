@@ -34,7 +34,7 @@ resources:
           - create_silver_table
           job_cluster_key: job_cluster
           notebook_task:
-            notebook_path: ../src/data load/2c_moveToSilverHist.py
+            notebook_path: ../src/data load/2c_movetosilverhist.py
       
 
       job_clusters:
