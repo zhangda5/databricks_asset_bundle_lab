@@ -24,7 +24,10 @@ jobs:
   deploy:
     name: 'Deploy bundle'
     runs-on: ubuntu-latest
-
+    env:
+          DATABRICKS_TOKEN: ${{ secrets.PAT }}
+          DATABRICKS_BUNDLE_ENV: dev
+          
     steps:
       # Check out this repo, so that this workflow can access it.
       - uses: actions/checkout@v3
@@ -42,6 +45,4 @@ jobs:
       - run: databricks bundle run lab
       
         working-directory: .
-        env:
-          DATABRICKS_TOKEN: ${{ secrets.PAT }}
-          DATABRICKS_BUNDLE_ENV: dev
+     
