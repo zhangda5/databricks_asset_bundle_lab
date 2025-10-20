@@ -42,7 +42,7 @@ jobs:
       
       - run: databricks bundle deploy
 
-      - run: databricks bundle run lab
+      - run: databricks bundle run lab_job
       
         working-directory: .
      
