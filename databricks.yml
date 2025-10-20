@@ -6,6 +6,10 @@ bundle:
 include:
   - resources/*.yml
 
+variables:
+  dev_workspace:
+    description: development workspace url 
+
 targets:
   dev:
     # The default target uses 'mode: development' to create a development copy.
@@ -15,7 +19,7 @@ targets:
     mode: development
     default: true
     workspace:
-      host: https://adb-3271945798423440.0.azuredatabricks.net
+      host: ${var.dev_workspace}
 
   prod:
     mode: production
