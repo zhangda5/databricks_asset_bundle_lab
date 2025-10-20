@@ -38,14 +38,14 @@ jobs:
 
       # Deploy the bundle to the "Test" target as defined
       # in the bundle's settings file.
-      - run: databricks bundle validate --target ${{ github.event.inputs.environment }}
+      - run: databricks bundle validate --target ${{ DATABRICKS_BUNDLE_ENV }}
 
       - name: Copy variable overrides
         run: |
-          mkdir -p .databricks/bundle/${{ github.event.inputs.environment }}
-          cp ${{ github.event.inputs.environment }}/variable-overrides.json .databricks/bundle/${{ github.event.inputs.environment }}/
+          mkdir -p .databricks/bundle/${{ DATABRICKS_BUNDLE_ENV }}
+          cp ${{ DATABRICKS_BUNDLE_ENV }}/variable-overrides.json .databricks/bundle/${{ DATABRICKS_BUNDLE_ENV }}/
       
-      #- run: databricks bundle deploy --target ${{ github.event.inputs.environment }}
+      #- run: databricks bundle deploy --target ${{ DATABRICKS_BUNDLE_ENV }}
 
       #- run: databricks bundle run lab_job
       
