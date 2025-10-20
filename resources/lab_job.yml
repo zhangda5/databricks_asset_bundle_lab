@@ -40,6 +40,7 @@ resources:
       job_clusters:
         - job_cluster_key: job_cluster
           new_cluster:
+            kind: single_node
             spark_version: 16.4.x-scala2.12
             node_type_id: Standard_D3_v2
             is_single_node: true
