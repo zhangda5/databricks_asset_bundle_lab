@@ -18,7 +18,7 @@ resources:
         - task_key: create_bronze_parquet
           job_cluster_key: job_cluster
           notebook_task:
-            notebook_path: ../src/table creation/1_createhistbronzeparquets.py
+            notebook_path: ../src/Table creation/1_createhistbronzeparquets.py
 
       
         - task_key: create_silver_table
@@ -26,7 +26,7 @@ resources:
           - task_key: create_bronze_parquet
           job_cluster_key: job_cluster
           notebook_task:
-            notebook_path: ../src/table creation/2b_createsilverbandtables.sql
+            notebook_path: ../src/Table creation/2b_createsilverbandtables.sql
 
       
         - task_key: load_bronze_to_silver
