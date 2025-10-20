@@ -40,7 +40,8 @@ resources:
       job_clusters:
         - job_cluster_key: job_cluster
           new_cluster:
-            kind: single_node
+            kind: CLASSIC_PREVIEW
+            is_single_node: true
             spark_version: 16.4.x-scala2.12
             node_type_id: Standard_D3_v2
             data_security_mode: SINGLE_USER
