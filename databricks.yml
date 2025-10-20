@@ -19,7 +19,7 @@ targets:
     mode: development
     default: true
     workspace:
-      host: ${var.dev_workspace}
+      host: {{var.dev_workspace}}
 
   prod:
     mode: production
