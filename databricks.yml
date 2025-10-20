@@ -10,6 +10,10 @@ variables:
   dev_workspace:
     description: development workspace url 
 
+env:
+  DATABRICKS_HOST: ${{var.workspace_url}}
+  USER: ${{var.user}}
+
 targets:
   dev:
     # The default target uses 'mode: development' to create a development copy.
@@ -19,7 +23,7 @@ targets:
     mode: development
     default: true
     workspace:
-      host: ${{var.workspace_url}}
+      host: 
 
   prod:
     mode: production
@@ -28,5 +32,5 @@ targets:
       # We explicitly deploy to /Workspace/Users/ to make sure we only have a single copy.
       root_path: /Workspace/Users/${{var.user}}/.bundle/${bundle.name}/${bundle.target}
     permissions:
-      - user_name: ${{var.user}}
+      - user_name: USER
         level: CAN_MANAGE
