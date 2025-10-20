@@ -23,7 +23,7 @@ resources:
       tasks:
         - task_key: create_silver_table
           depends_on: 
-          - create_bronze_parquet
+          - task_key:create_bronze_parquet
           job_cluster_key: job_cluster
           notebook_task:
             notebook_path: ../src/table creation/2b_createsilverbandtables.sql
@@ -31,10 +31,10 @@ resources:
       tasks:
         - task_key: load_bronze_to_silver
           depends_on: 
-          - create_silver_table
+          - task_key:create_silver_table
           job_cluster_key: job_cluster
           notebook_task:
-            notebook_path: ../src/data load/2c_moveToSilverHist.py
+            notebook_path: ../src/Data load/2c_moveToSilverHist.py
       
 
       job_clusters:
