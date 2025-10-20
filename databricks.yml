@@ -19,14 +19,14 @@ targets:
     mode: development
     default: true
     workspace:
-      host: ${var.workspace_url}
+      host: ${{var.workspace_url}}
 
   prod:
     mode: production
     workspace:
-      host: ${var.workspace_url}
-      # We explicitly deploy to /Workspace/Users/${var.user} to make sure we only have a single copy.
-      root_path: /Workspace/Users/${var.user}/.bundle/${bundle.name}/${bundle.target}
+      host: ${{var.workspace_url}}
+      # We explicitly deploy to /Workspace/Users/ to make sure we only have a single copy.
+      root_path: /Workspace/Users/${{var.user}}/.bundle/${bundle.name}/${bundle.target}
     permissions:
-      - user_name: ${var.user}
+      - user_name: ${{var.user}}
         level: CAN_MANAGE
