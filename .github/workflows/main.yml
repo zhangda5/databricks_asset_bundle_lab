@@ -29,7 +29,7 @@ jobs:
           DATABRICKS_BUNDLE_ENV: dev
           DATABRICKS_AUTH_TYPE: github-oidc
           DATABRICKS_HOST: https://adb-3271945798423440.0.azuredatabricks.net
-          DATABRICKS_CLIENT_ID: dccbd203-c584-4c99-82e8-16d6c5092fef
+          DATABRICKS_CLIENT_ID: ce7f27f1-cc79-4e71-aa6a-379e4e64f442
           
     steps:
       # Check out this repo, so that this workflow can access it.
@@ -70,7 +70,7 @@ jobs:
           DATABRICKS_BUNDLE_ENV: dev
           DATABRICKS_AUTH_TYPE: github-oidc
           DATABRICKS_HOST: https://adb-3271945798423440.0.azuredatabricks.net
-          DATABRICKS_CLIENT_ID: dccbd203-c584-4c99-82e8-16d6c5092fef
+          DATABRICKS_CLIENT_ID: ce7f27f1-cc79-4e71-aa6a-379e4e64f442
 
 
       
