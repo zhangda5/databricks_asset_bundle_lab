@@ -25,8 +25,11 @@ jobs:
     name: 'Deploy bundle'
     runs-on: ubuntu-latest
     env:
-          DATABRICKS_TOKEN: ${{ secrets.PAT }}
+          #DATABRICKS_TOKEN: ${{ secrets.PAT }}
           DATABRICKS_BUNDLE_ENV: dev
+          DATABRICKS_AUTH_TYPE: github-oidc
+          DATABRICKS_HOST: https://adb-3271945798423440.0.azuredatabricks.net
+          DATABRICKS_CLIENT_ID: dccbd203-c584-4c99-82e8-16d6c5092fef
           
     steps:
       # Check out this repo, so that this workflow can access it.
@@ -63,8 +66,11 @@ jobs:
       - run: databricks bundle run lab_job --refresh-all
         working-directory: .
         env:
-          DATABRICKS_TOKEN: ${{ secrets.PAT }}
+          #DATABRICKS_TOKEN: ${{ secrets.PAT }}
           DATABRICKS_BUNDLE_ENV: dev
+          DATABRICKS_AUTH_TYPE: github-oidc
+          DATABRICKS_HOST: https://adb-3271945798423440.0.azuredatabricks.net
+          DATABRICKS_CLIENT_ID: dccbd203-c584-4c99-82e8-16d6c5092fef
 
 
       
