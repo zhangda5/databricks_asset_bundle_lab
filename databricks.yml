@@ -6,13 +6,18 @@ bundle:
 include:
   - resources/*.yml
 
-variables:
-  dev_workspace:
-    description: development workspace url 
 
-env:
-  DATABRICKS_HOST: ${{var.workspace_url}}
-  USER: ${{var.user}}
+variables:
+  devworkspace:
+    description: workspace url for dev
+    default: https://adb-3271945798423440.0.azuredatabricks.net
+  prdworkspace:
+    description: workspace url for prod
+    default: https://adb-3271945798423440.0.azuredatabricks.net
+  username:
+    description: provide username in workspace
+    default: admin@mngenvmcap292602.onmicrosoft.com
+
 
 targets:
   dev:
@@ -22,15 +27,15 @@ targets:
     # See also https://docs.databricks.com/dev-tools/bundles/deployment-modes.html.
     mode: development
     default: true
-    workspace: DATABRICKS_HOST
-      host: 
+    workspace: 
+      host: $(var.devworkspace)
 
   prod:
     mode: production
-    workspace: DATABRICKS_HOST
-      host: DATABRICKS_HOST
+    workspace: 
+      host: $(var.prdworkspace)
       # We explicitly deploy to /Workspace/Users/ to make sure we only have a single copy.
-      root_path: /Workspace/Users/USER/.bundle/${bundle.name}/${bundle.target}
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
     permissions:
-      - user_name: USER
+      - user_name: $(var.username)
         level: CAN_MANAGE
