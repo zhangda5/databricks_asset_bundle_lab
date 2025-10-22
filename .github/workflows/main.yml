@@ -16,7 +16,11 @@ on:
       - synchronize
     branches:
       - main
-
+      
+permissions:
+  id-token: write     # Required for OIDC
+  contents: read      # Required to checkout code
+  
 jobs:
   # Used by the "pipeline_update" job to deploy the bundle.
   # Bundle validation is automatically performed as part of this deployment.
