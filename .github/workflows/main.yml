@@ -46,8 +46,8 @@ jobs:
           #DATABRICKS_TOKEN: ${{ secrets.PAT }}
           #DATABRICKS_BUNDLE_ENV: dev
           DATABRICKS_AUTH_TYPE: github-oidc   # Enables GitHub → Databricks OIDC federation
-          DATABRICKS_HOST: https://adb-3271945798423440.0.azuredatabricks.net  # Workspace URL
-          DATABRICKS_CLIENT_ID: 98611458-05b0-4689-8f3e-8f4f43fe02a6           # Service principal
+          DATABRICKS_HOST: ${{ secrets.DEVWORKSPACE }}  # Workspace URL
+          DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKSSP }}           # Service principal
           
     steps:
       # Check out this repo, so that this workflow can access it.
@@ -94,8 +94,8 @@ jobs:
           #DATABRICKS_TOKEN: ${{ secrets.PAT }}
           #DATABRICKS_BUNDLE_ENV: dev
           DATABRICKS_AUTH_TYPE: github-oidc
-          DATABRICKS_HOST: https://adb-3271945798423440.0.azuredatabricks.net
-          DATABRICKS_CLIENT_ID: 98611458-05b0-4689-8f3e-8f4f43fe02a6
+          DATABRICKS_HOST: ${{ secrets.DEVWORKSPACE }}
+          DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKSSP }}
 
 
       
