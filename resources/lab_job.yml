@@ -40,7 +40,7 @@ resources:
           # This Python notebook set up bronze volume
             notebook_path: ../src/Table creation/bronze-volume-setup.sql
       
-      tasks:
+      
         - task_key: create_bronze_parquet  
           depends_on:                              # Ensures this runs after Bronze creation
           - task_key: bronze_volume_setup
