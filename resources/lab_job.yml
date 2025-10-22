@@ -1,8 +1,20 @@
+# This file defines a Databricks job as part of the "lab" bundle.
+# Each job can include multiple tasks (Python/SQL notebooks, pipelines, etc.)
+# and can be deployed via Databricks Asset Bundles in CI/CD pipelines.
+# Reference: https://docs.databricks.com/dev-tools/bundles/resources.html
+
 # The main job for lab.
 resources:
+# Define a Databricks job resource called "lab_job"
   jobs:
     lab_job:
       name: lab_job
+
+# ------------------------------------------------------------------------
+# The trigger section allows this job to run on a recurring schedule.
+# The below example (commented out) would run once per day.
+# Uncomment and adjust as needed for production workloads.
+# ------------------------------------------------------------------------
 
     #  trigger:
     #    # Run this job every day, exactly one day from the last run; see https://docs.databricks.com/api/workspace/jobs/create#trigger
@@ -13,16 +25,24 @@ resources:
       #email_notifications:
       #  on_failure:
       #    - your_email@example.com
-
+      
+      # JOB TASKS
+      # ------------------------------------------------------------------------
+      # Each task defines a step within the job.
+      # Tasks can depend on one another (using `depends_on`) and can execute
+      # Python notebooks, SQL scripts, or JAR/Wheel tasks.
+      # ------------------------------------------------------------------------
+      
       tasks:
-        - task_key: create_bronze_parquet
-          job_cluster_key: job_cluster
+        - task_key: create_bronze_parquet         # Unique identifier for this task
+          job_cluster_key: job_cluster            # Reference to the cluster definition below
           notebook_task:
+          # This Python notebook creates initial Bronze-level Parquet files
             notebook_path: ../src/Table creation/1_createhistbronzeparquets.py
 
       
         - task_key: create_silver_table
-          depends_on: 
+          depends_on:                              # Ensures this runs after Bronze creation
           - task_key: create_bronze_parquet
           job_cluster_key: job_cluster
           notebook_task:
@@ -36,13 +56,17 @@ resources:
           notebook_task:
             notebook_path: ../src/Data load/2c_moveToSilverHist.py
       
-
+      # JOB CLUSTER DEFINITION
+      # ------------------------------------------------------------------------
+      # A job-specific cluster that Databricks creates for the duration of the run.
+      # Using "job_clusters" ensures isolated compute and avoids long-running clusters.
+      # ------------------------------------------------------------------------
       job_clusters:
         - job_cluster_key: job_cluster
           new_cluster:
             kind: CLASSIC_PREVIEW
-            is_single_node: true
-            spark_version: 16.4.x-scala2.12
-            node_type_id: Standard_D3_v2
-            data_security_mode: SINGLE_USER
+            is_single_node: true                   # Runs all tasks on a single node
+            spark_version: 16.4.x-scala2.12        # Databricks Runtime version
+            node_type_id: Standard_D3_v2           # Azure VM type for this cluster
+            data_security_mode: SINGLE_USER        # Ensures cluster runs under one user context
         
