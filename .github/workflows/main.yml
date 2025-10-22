@@ -1,5 +1,11 @@
+# This workflow validates, deploys, and runs the Databricks bundle for the
+# "dev" environment. It uses GitHub OIDC authentication for secure,
+# tokenless access to Databricks (no need to store long-lived PATs).
+# Reference: https://docs.databricks.com/en/dev-tools/bundles/ci-cd.html
+# ---------------------------------------------------------------------------
+
 # This workflow validates, deploys, and runs the specified bundle
-# within a pre-production target named "Test".
+# within a pre-production target named "dev".
 name: 'Dev deployment'
 
 # Ensure that only a single job or workflow using the same concurrency group
@@ -8,6 +14,7 @@ concurrency: 1
 
 # Trigger this workflow whenever a pull request is opened against the repo's
 # main branch or an existing pull request's head branch is updated.
+# - Manually via "workflow_dispatch" (triggered by a user in GitHub UI)
 on:
  workflow_dispatch:
   pull_request:
@@ -18,8 +25,8 @@ on:
       - main
       
 permissions:
-  id-token: write     # Required for OIDC
-  contents: read      # Required to checkout code
+  id-token: write     # write → Required for GitHub OIDC authentication with Databricks
+  contents: read      # read → Needed to check out the repository code
   
 jobs:
   # Used by the "pipeline_update" job to deploy the bundle.
@@ -30,11 +37,17 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     env:
+      # --- Databricks Authentication and Configuration -----------------------
+      # Using OIDC (OpenID Connect) to securely authenticate to Databricks.
+      # These values match your Databricks workspace and service principal.
+      #
+      # DATABRICKS_TOKEN: ${{ secrets.PAT }}  # Use personal token as alternative to authenticate 
+      # DATABRICKS_BUNDLE_ENV: dev            # Optional environment override for bundle
           #DATABRICKS_TOKEN: ${{ secrets.PAT }}
           #DATABRICKS_BUNDLE_ENV: dev
-          DATABRICKS_AUTH_TYPE: github-oidc
-          DATABRICKS_HOST: https://adb-3271945798423440.0.azuredatabricks.net
-          DATABRICKS_CLIENT_ID: 98611458-05b0-4689-8f3e-8f4f43fe02a6
+          DATABRICKS_AUTH_TYPE: github-oidc   # Enables GitHub → Databricks OIDC federation
+          DATABRICKS_HOST: https://adb-3271945798423440.0.azuredatabricks.net  # Workspace URL
+          DATABRICKS_CLIENT_ID: 98611458-05b0-4689-8f3e-8f4f43fe02a6           # Service principal
           
     steps:
       # Check out this repo, so that this workflow can access it.
@@ -49,6 +62,12 @@ jobs:
       - run: databricks bundle deploy 
         working-directory: .
 
+
+  # ----------------------------------------------------------------------------
+  # This job runs after successful deployment.
+  # It executes the Databricks job (defined in your bundle as lab_job)
+  # to validate functionality and update the pipeline.
+  # ----------------------------------------------------------------------------
 
   # Validate, deploy, and then run the bundle.
   pipeline_update:
