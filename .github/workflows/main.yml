@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
           #DATABRICKS_TOKEN: ${{ secrets.PAT }}
-          DATABRICKS_BUNDLE_ENV: dev
+          #DATABRICKS_BUNDLE_ENV: dev
           DATABRICKS_AUTH_TYPE: github-oidc
           DATABRICKS_HOST: https://adb-3271945798423440.0.azuredatabricks.net
           DATABRICKS_CLIENT_ID: ce7f27f1-cc79-4e71-aa6a-379e4e64f442
@@ -71,7 +71,7 @@ jobs:
         working-directory: .
         env:
           #DATABRICKS_TOKEN: ${{ secrets.PAT }}
-          DATABRICKS_BUNDLE_ENV: dev
+          #DATABRICKS_BUNDLE_ENV: dev
           DATABRICKS_AUTH_TYPE: github-oidc
           DATABRICKS_HOST: https://adb-3271945798423440.0.azuredatabricks.net
           DATABRICKS_CLIENT_ID: ce7f27f1-cc79-4e71-aa6a-379e4e64f442
