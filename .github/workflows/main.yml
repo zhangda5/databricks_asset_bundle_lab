@@ -28,7 +28,7 @@ jobs:
   deploy:
     name: 'Deploy bundle'
     runs-on: ubuntu-latest
-    environment: prod
+    environment: dev
     env:
           #DATABRICKS_TOKEN: ${{ secrets.PAT }}
           #DATABRICKS_BUNDLE_ENV: dev
@@ -54,6 +54,7 @@ jobs:
   pipeline_update:
     name: 'Run pipeline update'
     runs-on: ubuntu-latest
+    environment: dev
 
     # Run the "deploy" job first.
     needs:
