@@ -26,12 +26,12 @@ resources:
       #  on_failure:
       #    - your_email@example.com
       
-      # JOB TASKS
-      # ------------------------------------------------------------------------
-      # Each task defines a step within the job.
-      # Tasks can depend on one another (using `depends_on`) and can execute
-      # Python notebooks, SQL scripts, or JAR/Wheel tasks.
-      # ------------------------------------------------------------------------
+ # JOB TASKS
+ # ------------------------------------------------------------------------
+ # Each task defines a step within the job.
+ # Tasks can depend on one another (using `depends_on`) and can execute
+ # Python notebooks, SQL scripts, or JAR/Wheel tasks.
+ # ------------------------------------------------------------------------
       
       tasks:
         - task_key: create_bronze_parquet         # Unique identifier for this task
@@ -56,11 +56,11 @@ resources:
           notebook_task:
             notebook_path: ../src/Data load/2c_moveToSilverHist.py
       
-      # JOB CLUSTER DEFINITION
-      # ------------------------------------------------------------------------
-      # A job-specific cluster that Databricks creates for the duration of the run.
-      # Using "job_clusters" ensures isolated compute and avoids long-running clusters.
-      # ------------------------------------------------------------------------
+  # JOB CLUSTER DEFINITION
+  # ------------------------------------------------------------------------
+  # A job-specific cluster that Databricks creates for the duration of the run.
+  # Using "job_clusters" ensures isolated compute and avoids long-running clusters.
+  # ------------------------------------------------------------------------
       job_clusters:
         - job_cluster_key: job_cluster
           new_cluster:
