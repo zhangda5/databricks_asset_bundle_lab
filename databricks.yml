@@ -1,12 +1,17 @@
-# This is a Databricks asset bundle definition for lab.
+# This is a Databricks asset bundle definition for a project name lab.
+# It controls how Databricks resources (jobs, pipelines, notebooks, etc.) are packaged
 # See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+
+# The logical name of this asset bundle — used in Databricks for tracking deployments.
 bundle:
   name: lab
 
+# Include all YAML files inside the 'resources' folder.
 include:
   - resources/*.yml
 
-
+# Variables make your bundle reusable and environment-independent.
+# They can be overridden at deployment time (e.g., via GitHub Actions secrets or CLI).
 variables:
   devworkspace:
     description: workspace url for dev
@@ -18,11 +23,14 @@ variables:
     description: provide username in workspace
     default: admin@mngenvmcap292602.onmicrosoft.com
 
+# Each target represents an environment (e.g., dev, staging, prod)
+# user can also include staging environment if required 
+# with its own workspace and deployment mode.
 
 targets:
   dev:
     # The default target uses 'mode: development' to create a development copy.
-    # - Deployed resources get prefixed with '[Test my_user_name]'
+    # - Deployed resources get prefixed with '[dev my_user_name]'
     # - Any job schedules and triggers are paused by default.
     # See also https://docs.databricks.com/dev-tools/bundles/deployment-modes.html.
     mode: development
@@ -37,5 +45,6 @@ targets:
       # We explicitly deploy to /Workspace/Users/ to make sure we only have a single copy.
       root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
     permissions:
+      # Assign the specified user the ability to fully manage deployed assets.
       - user_name: ${var.username}
         level: CAN_MANAGE
