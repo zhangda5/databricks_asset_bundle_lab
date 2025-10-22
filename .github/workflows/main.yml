@@ -28,6 +28,7 @@ jobs:
   deploy:
     name: 'Deploy bundle'
     runs-on: ubuntu-latest
+    environment: Prod
     env:
           #DATABRICKS_TOKEN: ${{ secrets.PAT }}
           #DATABRICKS_BUNDLE_ENV: dev
