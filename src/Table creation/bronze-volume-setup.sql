@@ -12,7 +12,7 @@
 
 -- DBTITLE 1,Parameters
 -- MAGIC %python
--- MAGIC dbutils.widgets.text('storageaccountname', '')
+-- MAGIC dbutils.widgets.text('storageaccountname', 'demolab')
 
 -- COMMAND ----------
 
