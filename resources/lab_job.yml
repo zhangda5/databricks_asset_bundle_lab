@@ -34,16 +34,16 @@ resources:
  # ------------------------------------------------------------------------
       
       tasks:
-        - task_key: bronze_volume_setup         # Unique identifier for this task
-          job_cluster_key: job_cluster            # Reference to the cluster definition below
-          notebook_task:
-          # This Python notebook set up bronze volume
-            notebook_path: ../src/Table creation/bronze-volume-setup.sql
+    #    - task_key: bronze_volume_setup         # Unique identifier for this task
+    #      job_cluster_key: job_cluster            # Reference to the cluster definition below
+    #      notebook_task:
+    #      # This Python notebook set up bronze volume
+    #        notebook_path: ../src/Table creation/bronze-volume-setup.sql
       
       
         - task_key: create_bronze_parquet  
-          depends_on:                              # Ensures this runs after Bronze creation
-          - task_key: bronze_volume_setup
+   #       depends_on:                              # Ensures this runs after Bronze creation
+   #       - task_key: bronze_volume_setup
           job_cluster_key: job_cluster            
           notebook_task:
           # This Python notebook creates initial Bronze-level Parquet files
