@@ -13,12 +13,6 @@ include:
 # Variables make your bundle reusable and environment-independent.
 # They can be overridden at deployment time (e.g., via GitHub Actions secrets or CLI).
 variables:
-  devworkspace:
-    description: workspace url for dev
-    default: https://adb-3271945798423440.0.azuredatabricks.net
-  prdworkspace:
-    description: workspace url for prod
-    default: https://adb-3271945798423440.0.azuredatabricks.net
   username:
     description: provide username in workspace
     default: admin@mngenvmcap292602.onmicrosoft.com
