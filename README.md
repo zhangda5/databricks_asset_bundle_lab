@@ -1,6 +1,6 @@
 # **Databricks Asset Bundle Lab**
 
-
+<img width="318" height="159" alt="1" src="https://github.com/user-attachments/assets/7fb88786-7824-4407-a76b-7a51a6929b1a" />
 
 **Introduction**
 
