@@ -1,5 +1,7 @@
 # **Databricks Asset Bundle Lab**
 
+! https://www.google.com/imgres?q=azure%20databricks%20github%20logo&imgurl=https%3A%2F%2Frepository-images.githubusercontent.com%2F501817777%2Fee9b1ed5-7f67-4b8b-8fef-6a13fb96646f&imgrefurl=https%3A%2F%2Fgithub.com%2Ftopics%2Fazure-databricks&docid=UudT42FQo47C2M&tbnid=CGYU8kx3Nb5kXM&vet=12ahUKEwiU25yf2cWQAxWuDzQIHVIjDkoQM3oECBgQAA..i&w=1280&h=640&hcb=2&ved=2ahUKEwiU25yf2cWQAxWuDzQIHVIjDkoQM3oECBgQAA
+
 **Introduction**
 
 The Databricks Asset Bundle Lab repository provides a structured framework for deploying and managing Databricks assets-including jobs, notebooks, pipelines, and related resources-using the Asset Bundle approach. This approach allows teams to:
