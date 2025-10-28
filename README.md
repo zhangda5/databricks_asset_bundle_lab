@@ -1,4 +1,4 @@
-**Databricks Asset Bundle Lab**
+***Databricks Asset Bundle Lab***
 
 **Introduction**
 
