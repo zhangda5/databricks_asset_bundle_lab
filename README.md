@@ -28,13 +28,13 @@ Whether you are exploring Databricks automation for the first time or looking to
     databricks bundle deploy --target dev
 ```
 - **Deploy to production:**
-
-databricks bundle deploy --target prod
-
+```
+    databricks bundle deploy --target prod
+```
 - **Run a job or pipeline manually:**
-
-databricks bundle run
-
+```
+    databricks bundle run
+```
 **Project Structure**
 
 - databricks.yml - top-level configuration for the bundle.
