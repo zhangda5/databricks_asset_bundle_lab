@@ -25,7 +25,7 @@ Whether you are exploring Databricks automation for the first time or looking to
 
 - **Deploy to development:**
 
-databricks bundle deploy --target dev
+`databricks bundle deploy --target dev`
 
 - **Deploy to production:**
 
