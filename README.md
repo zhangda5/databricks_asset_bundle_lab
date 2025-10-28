@@ -22,10 +22,10 @@ Whether you are exploring Databricks automation for the first time or looking to
 - Appropriate workspace permissions to deploy jobs, pipelines, and other assets.
 
 **Deploying the Asset Bundle**
-
+```
 - **Deploy to development:**
 
-`databricks bundle deploy --target dev`
+    databricks bundle deploy --target dev
 
 - **Deploy to production:**
 
